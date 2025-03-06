@@ -1,0 +1,22 @@
+<h1>Add a New Book</h1>
+
+<%= form_with model: @book, local: true do |form| %>
+  <div>
+    <%= form.label :title, "Book Title" %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :author_id, "Author Name" %>
+    <%= form.collection_select :author_id, Author.all, :id, :name, prompt: "Select an Author" %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "Category Name" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Select a Category" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Book" %>
+  </div>
+<% end %>

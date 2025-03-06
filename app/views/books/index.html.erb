@@ -1,0 +1,20 @@
+<h1>Library Books</h1>
+
+
+<%= form_with url: books_path, method: :get, local: true do |form| %>
+  <%= form.text_field :search, placeholder: "Search by title, author, or category", value: params[:search] %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+<%= link_to "Add New Book", new_book_path %>
+
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <strong><%= book.title %></strong> by <%= book.author.name %> (Category: <%= book.category.name %>)
+      <%= link_to "Borrow", new_borrowing_path(book_id: book.id) %>
+    </li>
+  <% end %>
+</ul>

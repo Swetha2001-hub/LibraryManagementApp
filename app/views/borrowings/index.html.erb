@@ -1,0 +1,23 @@
+<h1>Borrowed Books</h1>
+
+<% if @borrowings.any? %>
+  <table border="1">
+    <tr>
+      <th>Book Title</th>
+      <th>Borrowed By</th>
+      <th>Borrow Date</th>
+      <th>Return Date</th>
+    </tr>
+
+    <% @borrowings.each do |borrowing| %>
+      <tr>
+        <td><%= borrowing.book.title if borrowing.book %></td>
+        <td><%= borrowing.user.name if borrowing.user %></td>
+        <td><%= borrowing.borrow_date %></td>
+        <td><%= borrowing.return_date %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No books have been borrowed yet.</p>
+<% end %>  

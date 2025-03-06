@@ -1,0 +1,27 @@
+<h1>Borrow a Book</h1>
+
+<%= form_with model: @borrowing, local: true do |form| %>
+  <div>
+    <%= form.label :user_id, "Select User" %>
+    <%= form.collection_select :user_id, User.all, :id, :name, prompt: "Choose a User" %>
+  </div>
+
+  <div>
+    <%= form.label :book_id, "Book" %>
+    <%= form.text_field :book_id, value: @borrowing.book_id, readonly: true %>
+  </div>
+
+  <div>
+    <%= form.label :borrow_date, "Borrow Date" %>
+    <%= form.date_select :borrow_date %>
+  </div>
+
+  <div>
+    <%= form.label :return_date, "Return Date" %>
+    <%= form.date_select :return_date %>
+  </div>
+
+  <div>
+    <%= form.submit "Borrow Book" %>
+  </div>
+<% end %>
